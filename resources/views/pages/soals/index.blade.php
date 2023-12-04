@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Users')
+@section('title', 'Bank Soal')
 
 @push('style')
     <!-- CSS Libraries -->
@@ -12,15 +12,15 @@
     <div class="main-content">
         <section class="section">
             <div class="section-header">
-                <h1>Users</h1>
+                <h1>Bank Soal</h1>
                 <div class="section-header-button">
-                    <a href="{{route('user.create')}}"
+                    <a href="{{route('soal.create')}}"
                         class="btn btn-primary">Add New</a>
                 </div>
                 <div class="section-header-breadcrumb">
                     <div class="breadcrumb-item active"><a href="#">Dashboard</a></div>
-                    <div class="breadcrumb-item"><a href="#">Users</a></div>
-                    <div class="breadcrumb-item">All Users</div>
+                    <div class="breadcrumb-item"><a href="#">Soal</a></div>
+                    <div class="breadcrumb-item">All Soal</div>
                 </div>
             </div>
             <div class="section-body">
@@ -29,15 +29,13 @@
                         @include('layouts.alert')
                     </div>
                 </div>
-                <h2 class="section-title">Users</h2>
-              
-
+                <h2 class="section-title">Soal</h2>
 
                 <div class="row mt-4">
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <h4>All Users</h4>
+                                <h4>All Soal</h4>
                             </div>
                             <div class="card-body">
                                 <div class="float-left">
@@ -49,12 +47,12 @@
                                     </select>
                                 </div>
                                 <div class="float-right">
-                                    <form>
+                                    <form method="GET" action="{{route('soal.index')}}">
                                         <div class="input-group">
                                             <input type="text"
                                                 class="form-control"
                                                 placeholder="Search"
-                                                name="name">
+                                                name="pertanyaan">
                                             <div class="input-group-append">
                                                 <button class="btn btn-primary"><i class="fas fa-search"></i></button>
                                             </div>
@@ -68,27 +66,31 @@
                                     <table class="table-striped table">
                                         <tr>
 
-                                            <th>Name</th>
-                                            <th>Email</th>
-                                            <th>Phone</th>
-                                            <th>Created At</th>
-                                            <th>Action</th>
+                                            <th>id</th>
+                                            <th>Soal</th>
+                                            <th>Jawaban A</th>
+                                            <th>Jawaban B</th>
+                                            <th>Jawaban C</th>
+                                            <th>Jawaban D</th>
+
                                         </tr>
                                         <tr>
-                                            @foreach ($users as $user)
+                                            @foreach ($soals as $soal)
 
 
-                                            <td>{{$user->name}}
+                                            <td>{{$soal->id}}
                                             </td>
                                             <td>
-                                                {{$user->email}}
+                                                {{$soal->pertanyaan}}
                                             </td>
                                             <td>
-                                                {{$user->phone}}
+                                                {{$soal->jawaban_a}}
                                             </td>
-                                            <td>{{$user->created_at}} </td>
-                                            <td>
-                                                <div class="d-flex justify-content-center">
+                                            <td>{{$soal->jawaban_b}} </td>
+                                            <td>{{$soal->jawaban_c}} </td>
+                                            <td>{{$soal->jawaban_d}} </td>
+                                            {{-- <td> --}}
+                                                {{-- <div class="d-flex justify-content-center">
                                                     <a href="{{route('user.edit',$user->id)}}" class="btn btn-sm btn-info btn-icon"><i class="fas fa-edit"></i>Edit</a>
 
                                                     <form action="{{route('user.destroy',$user->id)}}" method="POST" class="ML-2">
@@ -102,7 +104,8 @@
                                                 </div>
 
 
-                                            </td>
+
+                                            </td> --}}
 
                                         </tr>
                                         @endforeach
@@ -110,7 +113,7 @@
                                     </table>
                                 </div>
                                 <div class="float-right">
-                                    {{$users->withQueryString()->links()}}
+                                    {{$soals->withQueryString()->links()}}
                                 </div>
                             </div>
                         </div>

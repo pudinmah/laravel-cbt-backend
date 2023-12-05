@@ -4,18 +4,16 @@
 
 @push('style')
     <!-- CSS Libraries -->
-    <link rel="stylesheet"
-        href="{{ asset('library/selectric/public/selectric.css') }}">
+    <link rel="stylesheet" href="{{ asset('library/selectric/public/selectric.css') }}">
 @endpush
 
 @section('main')
     <div class="main-content">
         <section class="section">
             <div class="section-header">
-                <h1>Bank Soal</h1>
+                <h1>Bank Soal - Tugas 2 Mahpudin</h1>
                 <div class="section-header-button">
-                    <a href="{{route('soal.create')}}"
-                        class="btn btn-primary">Add New</a>
+                    <a href="{{ route('soal.create') }}" class="btn btn-primary">Add New</a>
                 </div>
                 <div class="section-header-breadcrumb">
                     <div class="breadcrumb-item active"><a href="#">Dashboard</a></div>
@@ -47,11 +45,9 @@
                                     </select>
                                 </div>
                                 <div class="float-right">
-                                    <form method="GET" action="{{route('soal.index')}}">
+                                    <form method="GET" action="{{ route('soal.index') }}">
                                         <div class="input-group">
-                                            <input type="text"
-                                                class="form-control"
-                                                placeholder="Search"
+                                            <input type="text" class="form-control" placeholder="Search"
                                                 name="pertanyaan">
                                             <div class="input-group-append">
                                                 <button class="btn btn-primary"><i class="fas fa-search"></i></button>
@@ -76,20 +72,18 @@
                                         </tr>
                                         <tr>
                                             @foreach ($soals as $soal)
-
-
-                                            <td>{{$soal->id}}
-                                            </td>
-                                            <td>
-                                                {{$soal->pertanyaan}}
-                                            </td>
-                                            <td>
-                                                {{$soal->jawaban_a}}
-                                            </td>
-                                            <td>{{$soal->jawaban_b}} </td>
-                                            <td>{{$soal->jawaban_c}} </td>
-                                            <td>{{$soal->jawaban_d}} </td>
-                                            {{-- <td> --}}
+                                                <td>{{ $soal->id }}
+                                                </td>
+                                                <td>
+                                                    {{ $soal->pertanyaan }}
+                                                </td>
+                                                <td>
+                                                    {{ $soal->jawaban_a }}
+                                                </td>
+                                                <td>{{ $soal->jawaban_b }} </td>
+                                                <td>{{ $soal->jawaban_c }} </td>
+                                                <td>{{ $soal->jawaban_d }} </td>
+                                                {{-- <td> --}}
                                                 {{-- <div class="d-flex justify-content-center">
                                                     <a href="{{route('user.edit',$user->id)}}" class="btn btn-sm btn-info btn-icon"><i class="fas fa-edit"></i>Edit</a>
 
@@ -113,7 +107,7 @@
                                     </table>
                                 </div>
                                 <div class="float-right">
-                                    {{$soals->withQueryString()->links()}}
+                                    {{ $soals->withQueryString()->links() }}
                                 </div>
                             </div>
                         </div>

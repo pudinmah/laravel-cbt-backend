@@ -13,8 +13,8 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
-        // NOTE: Dinamic
-        \App\Models\User::factory(100)->create();
+        // NOTE: Dinamic User
+        \App\Models\User::factory(10)->create();
 
 
         // NOTE: Static
